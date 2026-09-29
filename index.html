@@ -94,11 +94,11 @@ footer{padding:24px 0 32px;color:var(--muted);font-size:14px;border-top:1px soli
     <h2>Start a project</h2>
     <p class="sub">Tell us about your series. We reply with a plan and a quote.</p>
     <form id="f" onsubmit="return false">
-      <label for="n">Your name</label><input id="n" autocomplete="name">
-      <label for="e">Email</label><input id="e" type="email" autocomplete="email">
+      <label for="n">Your name</label><input id="n" name="name" autocomplete="name">
+      <label for="e">Email</label><input id="e" name="email" type="email" autocomplete="email">
       <label for="t">Project type</label>
-      <select id="t"><option>Licensed series</option><option>Short film or OVA</option><option>Fan project (with permission)</option></select>
-      <label for="m">Details</label><textarea id="m" rows="4" placeholder="Series title, number of episodes, deadline"></textarea>
+      <select id="t" name="project_type"><option>Licensed series</option><option>Short film or OVA</option><option>Fan project (with permission)</option></select>
+      <label for="m">Details</label><textarea id="m" name="details" rows="4" placeholder="Series title, number of episodes, deadline"></textarea>
       <p style="margin-top:14px"><button class="btn" id="send" type="button">Send request</button></p>
       <p id="ok" role="status"></p>
     </form>
@@ -118,8 +118,18 @@ footer{padding:24px 0 32px;color:var(--muted);font-size:14px;border-top:1px soli
     timer=setInterval(function(){bars.forEach(function(b){b.style.height=(10+Math.random()*80)+'%'})},130);
   });
   document.getElementById('send').addEventListener('click',function(){
-    var n=document.getElementById('n').value.trim(),e=document.getElementById('e').value.trim(),o=document.getElementById('ok');
-    o.textContent=(n&&e)?'Thanks, '+n+'. This demo form does not send yet, so connect it to email or a form service.':'Enter your name and email first.';
+    var n=document.getElementById('n').value.trim(),e=document.getElementById('e').value.trim(),o=document.getElementById('ok'),sb=this;
+    if(!n||!e){o.textContent='Enter your name and email first.';return}
+    sb.disabled=true;o.textContent='Sending...';
+    fetch('https://formspree.io/f/mqpanyjw',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({name:n,email:e,project_type:document.getElementById('t').value,details:document.getElementById('m').value})
+    }).then(function(r){
+      if(r.ok){o.textContent='Thanks, '+n+'. We received your request and will reply by email.';document.getElementById('f').reset()}
+      else{o.textContent='Could not send. Please try again.'}
+    }).catch(function(){o.textContent='Could not send. Check your connection and try again.'})
+    .then(function(){sb.disabled=false});
   });
 })();
 </script>
