@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kuural Studio – Tamil Anime Dubbing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@500;800&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f7f6; --ink:#0e2f3a; --muted:#4d6670; --teal:#0f5566; --pink:#d6336c; --card:#ffffff; --line:#cfdcda; --on-accent:#fff;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#0b1a20;--ink:#eaf3f2;--muted:#9db5b9;--teal:#5fc3d6;--pink:#ff6b9a;--card:#12262e;--line:#23404a;--on-accent:#0b1a20}
+}
+:root[data-theme="dark"]{--bg:#0b1a20;--ink:#eaf3f2;--muted:#9db5b9;--teal:#5fc3d6;--pink:#ff6b9a;--card:#12262e;--line:#23404a;--on-accent:#0b1a20}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,sans-serif;line-height:1.6}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-weight:600;font-size:15px}
+nav b{font-family:"Anek Tamil",sans-serif;font-size:20px}
+nav a{color:var(--muted);text-decoration:none;margin-left:16px}
+nav a:hover,nav a:focus-visible{color:var(--pink)}
+.hero{padding:28px 0 36px}
+.ta{font-family:"Anek Tamil","Noto Sans Tamil",sans-serif;font-weight:800;font-size:clamp(4.5rem,26vw,9rem);line-height:1;color:var(--teal);margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(1.5rem,6vw,2.2rem);line-height:1.2;margin:8px 0 14px;font-weight:800}
+.lead{color:var(--muted);max-width:52ch;margin:0 0 22px}
+.wave{display:flex;align-items:center;gap:4px;height:64px;margin:0 0 20px}
+.wave i{flex:1;background:var(--pink);border-radius:3px;height:20%;transition:height .12s}
+.btn{font:700 16px Manrope,sans-serif;background:var(--pink);color:var(--on-accent);border:0;border-radius:10px;padding:13px 22px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--line);margin-left:8px}
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+section{padding:30px 0;border-top:1px solid var(--line)}
+h2{font-size:1.5rem;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 18px}
+.grid{display:grid;gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h3{margin:0 0 4px;font-size:1.05rem}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s);flex:none;width:32px;height:32px;border-radius:50%;background:var(--teal);color:var(--on-accent);display:grid;place-items:center;font-weight:800}
+.steps strong{display:block}
+.steps span{color:var(--muted);font-size:.95rem}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 4px}
+input,select,textarea{width:100%;font:16px Manrope,sans-serif;padding:11px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+#ok{margin-top:12px;font-weight:600;color:var(--teal)}
+footer{padding:24px 0 32px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+@media (min-width:600px){.grid.three{grid-template-columns:repeat(3,1fr)}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.wave i{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <b>குரல் Studio</b>
+    <span><a href="#services">Services</a><a href="#process">Process</a><a href="#contact">Contact</a></span>
+  </nav>
+
+  <header class="hero">
+    <p class="ta" lang="ta">குரல்</p>
+    <h1>Tamil dubbing for anime, done with heart.</h1>
+    <p class="lead">We give anime a Tamil voice: natural dialogue, lip-synced delivery, and casting that fits each character. For studios, licensors, and fan projects with permission.</p>
+    <div class="wave" id="wave" aria-hidden="true"></div>
+    <button class="btn" id="play" type="button">Animate the waveform</button>
+    <a class="btn alt" href="#contact">Get a quote</a>
+  </header>
+
+  <section id="services">
+    <h2>What we do</h2>
+    <p class="sub">Everything needed to release an anime episode in Tamil.</p>
+    <div class="grid three">
+      <div class="card"><h3>Tamil script adaptation</h3><p>Translation that sounds like real speech, timed to the mouth flaps and the scene.</p></div>
+      <div class="card"><h3>Voice casting and recording</h3><p>Voice actors matched to each character, recorded in a treated studio.</p></div>
+      <div class="card"><h3>Mixing and delivery</h3><p>Dialogue mixed with the original music and effects, delivered in your format.</p></div>
+    </div>
+  </section>
+
+  <section id="process">
+    <h2>How a project runs</h2>
+    <ol class="steps">
+      <li><div><strong>Share the episode</strong><span>Send the video, the original script, and your rights details.</span></div></li>
+      <li><div><strong>Adapt the script</strong><span>We write the Tamil lines and match them to lip movement.</span></div></li>
+      <li><div><strong>Cast and record</strong><span>You approve voice samples, then we record.</span></div></li>
+      <li><div><strong>Mix and deliver</strong><span>Final audio or full video, with one round of revisions.</span></div></li>
+    </ol>
+  </section>
+
+  <section id="contact">
+    <h2>Start a project</h2>
+    <p class="sub">Tell us about your series. We reply with a plan and a quote.</p>
+    <form id="f" onsubmit="return false">
+      <label for="n">Your name</label><input id="n" autocomplete="name">
+      <label for="e">Email</label><input id="e" type="email" autocomplete="email">
+      <label for="t">Project type</label>
+      <select id="t"><option>Licensed series</option><option>Short film or OVA</option><option>Fan project (with permission)</option></select>
+      <label for="m">Details</label><textarea id="m" rows="4" placeholder="Series title, number of episodes, deadline"></textarea>
+      <p style="margin-top:14px"><button class="btn" id="send" type="button">Send request</button></p>
+      <p id="ok" role="status"></p>
+    </form>
+  </section>
+
+  <footer>&copy; 2026 Kuural Studio. Only work with content you have the rights to dub.</footer>
+</div>
+
+<script>
+(function(){
+  var w=document.getElementById('wave'),bars=[],i;
+  for(i=0;i<40;i++){var b=document.createElement('i');b.style.height=(15+Math.abs(Math.sin(i*.6))*45)+'%';w.appendChild(b);bars.push(b)}
+  var timer=null,btn=document.getElementById('play');
+  btn.addEventListener('click',function(){
+    if(timer){clearInterval(timer);timer=null;btn.textContent='Animate the waveform';return}
+    btn.textContent='Stop';
+    timer=setInterval(function(){bars.forEach(function(b){b.style.height=(10+Math.random()*80)+'%'})},130);
+  });
+  document.getElementById('send').addEventListener('click',function(){
+    var n=document.getElementById('n').value.trim(),e=document.getElementById('e').value.trim(),o=document.getElementById('ok');
+    o.textContent=(n&&e)?'Thanks, '+n+'. This demo form does not send yet, so connect it to email or a form service.':'Enter your name and email first.';
+  });
+})();
+</script>
+</body>
+</html>
